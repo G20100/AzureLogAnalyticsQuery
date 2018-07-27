@@ -23,11 +23,33 @@ function Set-LogAnalyticsWorkspaceConnection -AADAppID -AADAppkey
 
 }
 
+function Get-LogAnalyticsQueryResultToDemo
+{
+    param(
+        [parameter(mandatory=$true)][string]$Query
+        [parameter(mandatory=$true)][string]$TimeSpan
+    )
+
+    Invoke-webRequest 
+    #クエリを実行する。Pythonだと以下
+    #api_endpoint = "https://api.loganalytics.io/v1/workspaces/0c97e69f-17c3-494c-a336-7bf6dbc338c7/query"
+    #payload = {'query': 'Perf | take 10',
+    #           'timespan': 'PT12H'}
+    #headers = {'Content-Type': 'application/json',
+    #          'Authorization': "Bearer " + token['accessToken']}
+    #          SESSION = requests.Session()
+    #SESSION.headers.update(headers)
+    #SESSION.post(api_endpoint, data=json.dumps(payload)).json()
+}
+
 function Get-LogAnalyticsQueryResult
 {
     param(
         [parameter(mandatory=$true)][string]$Query
-    )    
+        [parameter(mandatory=$true)][string]$TimeSpan
+    )
+
+    Invoke-webRequest 
     #クエリを実行する。Pythonだと以下
     #api_endpoint = "https://api.loganalytics.io/v1/workspaces/0c97e69f-17c3-494c-a336-7bf6dbc338c7/query"
     #payload = {'query': 'Perf | take 10',
